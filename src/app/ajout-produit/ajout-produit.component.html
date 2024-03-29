@@ -1,0 +1,67 @@
+<div>
+   <h1> Fiche Produit </h1>
+   <form #produitForm="ngForm" (ngSubmit)="validerFormulaire(produitForm)">    <table>
+
+       <tr >
+        <td> Code: </td>
+        <td>
+          <input type ="text" name="code" class="form-control"  [(ngModel)]="nouveauProduit.code"/>        </td>
+      </tr>
+       <tr >
+         <td> Désignation: </td>
+
+  <td>
+    <input type ="text" name="designation" class="form-control"  [(ngModel)]="nouveauProduit.designation"/>  </td>
+</tr>
+
+<tr>
+  <td>Catégorie</td>
+  <td><select class="form-control" name="categorie" [(ngModel)]="nouveauProduit.categorie" >
+    <option value="0">-- Veuillez choisir une catégorie --</option>
+    <option *ngFor="let c of categories"  [ngValue]="c">{{c.libelle}}</option>
+  </select></td>
+</tr>
+ <tr >
+   <td> Prix: </td>
+   <td>
+    <input type ="text" name="prix" class="form-control"  [(ngModel)]="nouveauProduit.prix"/>  </td>
+ </tr>
+  <tr >
+     <td [align]="'center'" colspan ="2">
+      <input type ="submit" value="Valider" [disabled]="!produitForm.form.valid" />
+      </td>
+    </tr>
+  </table>
+ </form>
+</div>
+<div class="container">
+  <h1> liste des produits </h1>
+   <table class="table table-striped">
+     <thead>
+      <tr>
+        <th> Id </th>
+        <th>Code</th>
+        <th>Designation</th>
+        <th>Catégorie</th>
+        <th>Prix</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+     <tbody>
+      <tr *ngFor = "let p of produits" >
+        <td> {{p.id}}</td>
+        <td> {{p.code}}</td>
+        <td> {{p.designation}}</td>
+        <td>            {{ p.categorie?.libelle }}
+
+        </td>
+        <td> {{p.prix}}</td>
+
+          <td>
+             <button (click)="supprimerProduit(p)" class="btn btn-danger">
+              <i class="bi bi-trash"></i> Supprimer </button>
+            </td>
+          </tr>
+        </tbody>
+       </table>
+      </div>

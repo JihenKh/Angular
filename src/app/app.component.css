@@ -1,0 +1,13 @@
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+}
+button{
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 10px;
+}
